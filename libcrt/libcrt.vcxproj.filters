@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="exe_main.cpp" />
+    <ClCompile Include="exe_wmain.cpp" />
+    <ClCompile Include="initializer.cpp" />
+    <ClCompile Include="except.cpp" />
+    <ClCompile Include="invalid_parameter.cpp" />
+    <ClCompile Include="string.cpp" />
+    <ClCompile Include="initterm.cpp" />
+    <ClCompile Include="print_funcs.cpp" />
+    <ClCompile Include="delete_scalar_size.cpp" />
+    <ClCompile Include="guard_support.cpp" />
+    <ClCompile Include="std_type_info_static.cpp" />
+    <ClCompile Include="xthrow.cpp" />
+    <ClCompile Include="new_scalar.cpp" />
+    <ClCompile Include="delete_scalar.cpp" />
+    <ClCompile Include="raisehan.cpp" />
+    <ClCompile Include="iob_func.cpp" />
+    <ClCompile Include="exe_winmain.cpp" />
+    <ClCompile Include="exe_wwinmain.cpp" />
+    <ClCompile Include="dll_dllmain.cpp" />
+    <ClCompile Include="tncleanup.cpp" />
+    <ClCompile Include="utility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vcstartup_internal.h" />
+    <ClInclude Include="internal_shared.h" />
+    <ClInclude Include="vcruntime_internal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exe_common.inl" />
+  </ItemGroup>
+</Project>
