@@ -38,3 +38,6 @@ if ($? -eq $false) {
 }
 
 rm $LibPath\*.exp
+
+echo 'Building libcrt.lib...'
+msbuild -p:configuration=Release -p:platform=$Platform
