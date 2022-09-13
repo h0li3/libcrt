@@ -1,5 +1,6 @@
 #include "vcstartup_internal.h"
 #include "internal_shared.h"
+#include <stdio.h>
 
 typedef void(__cdecl* _PVFV)(void);
 typedef int(__cdecl* _PIFV)(void);
@@ -9,6 +10,9 @@ extern "C" char** __cdecl _get_environ(char***);
 extern "C" char** __cdecl _get_wenviron(wchar_t***);
 extern "C" void __cdecl _c_exit();
 extern "C" bool __cdecl __vcrt_initialize_ptd();
+extern "C" int __ncrt_init_printf();
+extern "C" int __cdecl __init_onexit_table();
+extern int __ncrt_onexit();
 
 #undef __argc
 #undef __argv
@@ -99,29 +103,39 @@ extern int __cdecl __ncrt_init_iob();
 
 static __declspec(noinline) int __cdecl __ncrt_common_main_seh()
 {
-    bool has_cctor = false;
+    //bool has_cctor = false;
+    int result = 255;
 
     __ncrt_init_iob();
-
+    if (__ncrt_init_printf() != 0)
+        return result;
+    if (__init_onexit_table() != 0)
+        return result;
     if (!__vcrt_initialize_ptd())
-        abort();
+        return result;
 
-    //__try
-    {
+    __try {
         if (_initterm_e(__xi_a, __xi_z) != 0)
-            return 255;
+            return result;
         _initterm(__xc_a, __xc_z);
-        return invoke_main();
+        int result = invoke_main();
     }
-    //__except (1)
-    {
+    __except (1) {
         //int const main_result = GetExceptionCode();
 
-        if (!has_cctor)
-            _c_exit();
+        //if (!has_cctor)
+            //_c_exit();
 
         //return main_result;
+        printf("unhandled exception: 0x%08lx\n", GetExceptionCode());
     }
+    __try {
+        __ncrt_onexit();
+    }
+    __except (1) {
+        ;
+    }
+    return result;
 }
 
 static __forceinline int __cdecl __ncrt_common_main()
