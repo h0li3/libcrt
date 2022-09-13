@@ -40,7 +40,10 @@
 *.dSYM/
 *.su
 *.idb
-# *.pdb
+*.pdb
+Browse.VC*
+Solution.VC*
+*.ipch
 
 # Kernel Module Compile Results
 *.mod*
