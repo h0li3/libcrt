@@ -10,6 +10,7 @@ if ($Platform -ne 'x64' -and $Platform -ne 'x86') {
 
 $LibPath = "$PWD\libs\$Platform"
 $ObjPath = "$PWD\libs\objs\$Platform"
+$Libcrt_Proj = "$PWD\libcrt\libcrt.vcxproj"
 
 echo 'Building msvcrt.lib...'
 $err = lib /def:$LibPath\msvcrt.def /machine:$Platform /out:$LibPath\msvcrt.lib | Out-String
@@ -40,4 +41,4 @@ if ($? -eq $false) {
 rm $LibPath\*.exp
 
 echo 'Building libcrt.lib...'
-msbuild -p:configuration=Release -p:platform=$Platform
+msbuild -p:configuration=Release -p:platform=$Platform "$Libcrt_Proj"
