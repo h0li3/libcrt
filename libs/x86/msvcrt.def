@@ -1195,7 +1195,7 @@ asctime_s
 asin
 atan
 atan2
-atexit
+;atexit
 atof
 atoi
 atol

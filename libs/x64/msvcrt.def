@@ -1068,7 +1068,7 @@ atan
 atan2
 atan2f
 atanf
-atexit
+;atexit
 atof
 atoi
 atol

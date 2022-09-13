@@ -22,6 +22,7 @@
     <ClCompile Include="dll_dllmain.cpp" />
     <ClCompile Include="tncleanup.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="atexit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vcstartup_internal.h" />
