@@ -47,9 +47,9 @@ extern "C"
     {
         int len = -1;
 
-        if (_Buffer && _BufferCount != 0) {
+        if (_Buffer && _MaxCount != 0 && _MaxCount <= _BufferCount) {
             len = _vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-            if (len > _BufferCount - 1) {
+            if (len > _MaxCount - 1) {
                 _Buffer[0] = 0;
                 len = -1;
             }
