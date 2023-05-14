@@ -26,9 +26,6 @@ _ACRTIMP int __cdecl __stdio_common_vsprintf_s(
         }
     }
 
-#ifdef _LIBCRT_ABORT_WHEN_FAILURE
-    abort();
-#endif
     return len;
 }
 
@@ -57,9 +54,6 @@ _ACRTIMP int __cdecl __stdio_common_vsnprintf_s(
         }
     }
 
-#ifdef _LIBCRT_ABORT_WHEN_FAILURE
-    abort();
-#endif
     return len;
 }
 
