@@ -10,7 +10,6 @@ extern "C" char** __cdecl _get_environ(char***);
 extern "C" char** __cdecl _get_wenviron(wchar_t***);
 extern "C" void __cdecl _c_exit();
 extern "C" bool __cdecl __vcrt_initialize_ptd();
-extern "C" int __ncrt_init_printf();
 extern "C" int __cdecl __init_onexit_table();
 extern int __ncrt_onexit();
 
@@ -107,8 +106,6 @@ static __declspec(noinline) int __cdecl __ncrt_common_main_seh()
     int result = 255;
 
     __ncrt_init_iob();
-    if (__ncrt_init_printf() != 0)
-        return result;
     if (__init_onexit_table() != 0)
         return result;
     if (!__vcrt_initialize_ptd())
